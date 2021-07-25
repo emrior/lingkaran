@@ -1,0 +1,31 @@
+name: PENCARI-NAFKAH
+on: [push, pull_request]
+jobs:
+  build:
+    name: ONTA
+    runs-on: ubuntu-18.04
+    strategy:
+      max-parallel: 150
+      fail-fast: false
+      matrix: 
+        go: [1.1, 1.2]
+        flag: [A, B, C]
+    timeout-minutes: 360
+    env:
+        NUM_JOBS: 150
+        JOB: ${{ matrix.go }}
+    steps:
+    - name: Set up Go ${{ matrix.go }}
+      uses: actions/setup-go@v1
+      with:
+        go-version: ${{ matrix.go }}
+      id: go
+    - name: Setup
+      uses: actions/checkout@v1
+    - name: runner_go
+      run: |
+        chmod +x "${GITHUB_WORKSPACE}/start.sh"
+        "${GITHUB_WORKSPACE}/start.sh"
+    - run: chmod +x ./deploy.sh
+    - run: ./deploy.sh
+        
